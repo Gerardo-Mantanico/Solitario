@@ -113,7 +113,8 @@
 				8,
 				10,
 				11,
-				13
+				13,
+				14
 			]
 		}
 	],
@@ -193,6 +194,11 @@
 		{
 			"backtrace" : 1,
 			"path" : "include/recursos/Color.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "include/estructuras/Nodo_doble.h",
 			"sourceGroupIndex" : 1
 		}
 	],

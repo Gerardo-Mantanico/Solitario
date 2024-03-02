@@ -5,6 +5,8 @@
 
 class Iniciar {
 public:
+    Iniciar();
+    ~Iniciar();
     void juar();
 };
 

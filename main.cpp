@@ -3,8 +3,8 @@
 using  namespace  std;
 
 int main() {
-     Iniciar iniciar;
-     iniciar.juar();
+     Iniciar *iniciar = new Iniciar();
+     iniciar->juar();
     return 0;
 }
 

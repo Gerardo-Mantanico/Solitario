@@ -6,7 +6,8 @@ class Carta{
 public:
     string valor;
     string color;
-    string  texto;
+    string texto;
+    bool  visible;
 
 };
 #endif //SOLITARIO_CARTA_H

@@ -15,8 +15,9 @@ public:
     ~Cola();
     void push(Carta carta);
     Carta pop();
-    bool estado_pila();
-    void imprimir();
+    void imprimir(Cola *cola);
+    bool estado_cola();
+    Carta primera_carta();
 
 };
 

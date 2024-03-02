@@ -17,4 +17,5 @@ add_executable(Solitario main.cpp
         include/utilidades/GenerarCartas.h
         src/utilidades/GenerarCartas.cpp
         include/recursos/Color.h
+        include/estructuras/Nodo_doble.h
 )

@@ -44,7 +44,7 @@ void generar() {
         } else if (i == 2) {
             insertar_cartas("E3N", "Treboles negros");
         } else if (i == 3) {
-            insertar_cartas("!!N ", "Espadas negras");
+            insertar_cartas("!!N", "Espadas negras");
         }
     }
 }
@@ -52,28 +52,31 @@ void generar() {
 Cola* GenerarCartas::aleatorio() {
     generar();
     Cola *cola= new Cola();
-    int min_index = 0;
-    int max_index = 51;
-    vector<int> indices(max_index - min_index + 1);  // Crear una secuencia de índices en el rango dado
-    iota(indices.begin(), indices.end(), min_index);
-    random_device rd;   // Mezclar la secuencia de índices de manera aleatoria
-    mt19937 g(rd());
-    shuffle(indices.begin(), indices.end(), g);
-    vector<int> indices_aleatorios(indices.begin(), indices.begin() + 24);  // Selecciona los primeros 24 índices de la secuencia mezclada
-    // índices aleatorios generados
-    for (int index : indices_aleatorios) {
-        cout << "ID: "<<index<<"  del objeto aleatorio: " <<lista_cartas[index].color<<"  "<<lista_cartas[index].valor<<endl;
+    for (int i = 0; i <24 ; ++i) {
+        random_device rd;
+        mt19937 generador(rd());
+        uniform_int_distribution<int> distribucion(0, lista_cartas.size()-1);
+        int index = distribucion(generador);
         cola->push(lista_cartas[index]);
-      auto iter = lista_cartas.begin() + index;
-
+        auto iter = lista_cartas.begin() + index;
+        lista_cartas.erase(iter); //para elimininar el objeto en la array
     }
-
-    cout<<"imprimir cartas"<<endl;
-       for (Carta carta: lista_cartas) {
-           cout<<carta.texto<<"  "<<carta.color<<"  "<<carta.valor<<endl;
-           if(carta.valor=="K"){cout<<endl<<endl;}
-       }
-
     return cola;
+}
+
+
+Pila *GenerarCartas::Cargar_pila(int numero) {
+    Pila *pila = new Pila();
+    for (int i = 0; i <numero ; ++i) {
+        if(i==numero-1){
+            lista_cartas[0].visible=true;
+        }
+        else{
+            lista_cartas[0].visible=false;
+        }
+        pila->push(lista_cartas[0]);
+        lista_cartas.erase(lista_cartas.begin());
+    }
+    return pila;
 }
 
