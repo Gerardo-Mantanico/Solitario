@@ -8,7 +8,7 @@
 
 class Pila {
 private:
-    Nodo_doble nodo;
+    Nodo nodo;
     Nodo *raiz;
 public:
     Pila();
@@ -16,9 +16,10 @@ public:
     void push(Carta);
     Carta pop();
     void imprimir();
-    Carta tapadera();
+    Carta top();
     Nodo* getRaiz();
     int elementoEnPosicion(size_t posicion);
+    bool estado_pila();
 };
 
 #endif //SOLITARIO_PILA_H

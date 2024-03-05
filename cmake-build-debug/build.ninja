@@ -85,6 +85,24 @@ build CMakeFiles/Solitario.dir/src/utilidades/GenerarCartas.cpp.obj: CXX_COMPILE
   OBJECT_DIR = CMakeFiles\Solitario.dir
   OBJECT_FILE_DIR = CMakeFiles\Solitario.dir\src\utilidades
 
+build CMakeFiles/Solitario.dir/src/estrucuras/ListaDoble.cpp.obj: CXX_COMPILER__Solitario_unscanned_Debug C$:/Users/HP/CLionProjects/Solitario/src/estrucuras/ListaDoble.cpp || cmake_object_order_depends_target_Solitario
+  DEP_FILE = CMakeFiles\Solitario.dir\src\estrucuras\ListaDoble.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Solitario.dir
+  OBJECT_FILE_DIR = CMakeFiles\Solitario.dir\src\estrucuras
+
+build CMakeFiles/Solitario.dir/src/recursos/Validaciones.cpp.obj: CXX_COMPILER__Solitario_unscanned_Debug C$:/Users/HP/CLionProjects/Solitario/src/recursos/Validaciones.cpp || cmake_object_order_depends_target_Solitario
+  DEP_FILE = CMakeFiles\Solitario.dir\src\recursos\Validaciones.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Solitario.dir
+  OBJECT_FILE_DIR = CMakeFiles\Solitario.dir\src\recursos
+
+build CMakeFiles/Solitario.dir/src/recursos/RecursosLista.cpp.obj: CXX_COMPILER__Solitario_unscanned_Debug C$:/Users/HP/CLionProjects/Solitario/src/recursos/RecursosLista.cpp || cmake_object_order_depends_target_Solitario
+  DEP_FILE = CMakeFiles\Solitario.dir\src\recursos\RecursosLista.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Solitario.dir
+  OBJECT_FILE_DIR = CMakeFiles\Solitario.dir\src\recursos
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Solitario
@@ -93,7 +111,7 @@ build CMakeFiles/Solitario.dir/src/utilidades/GenerarCartas.cpp.obj: CXX_COMPILE
 #############################################
 # Link the executable Solitario.exe
 
-build Solitario.exe: CXX_EXECUTABLE_LINKER__Solitario_Debug CMakeFiles/Solitario.dir/main.cpp.obj CMakeFiles/Solitario.dir/src/utilidades/Tablero.cpp.obj CMakeFiles/Solitario.dir/src/utilidades/Iniciar.cpp.obj CMakeFiles/Solitario.dir/src/estrucuras/Pila.cpp.obj CMakeFiles/Solitario.dir/src/estrucuras/Cola.cpp.obj CMakeFiles/Solitario.dir/src/utilidades/GenerarCartas.cpp.obj
+build Solitario.exe: CXX_EXECUTABLE_LINKER__Solitario_Debug CMakeFiles/Solitario.dir/main.cpp.obj CMakeFiles/Solitario.dir/src/utilidades/Tablero.cpp.obj CMakeFiles/Solitario.dir/src/utilidades/Iniciar.cpp.obj CMakeFiles/Solitario.dir/src/estrucuras/Pila.cpp.obj CMakeFiles/Solitario.dir/src/estrucuras/Cola.cpp.obj CMakeFiles/Solitario.dir/src/utilidades/GenerarCartas.cpp.obj CMakeFiles/Solitario.dir/src/estrucuras/ListaDoble.cpp.obj CMakeFiles/Solitario.dir/src/recursos/Validaciones.cpp.obj CMakeFiles/Solitario.dir/src/recursos/RecursosLista.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Solitario.dir

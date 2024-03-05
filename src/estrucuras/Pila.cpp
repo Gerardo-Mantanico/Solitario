@@ -52,3 +52,18 @@ void Pila::imprimir()
 Nodo *Pila::getRaiz() {
     return raiz;
 }
+
+Carta Pila::top()  {
+    Carta informacion;
+    if(raiz !=NULL){
+        informacion  = raiz->carta;
+    }
+    else{
+        informacion.texto="  X  ";
+    }
+    return  informacion;
+}
+
+bool Pila::estado_pila() {
+    return (raiz==NULL) ? true :false;
+}

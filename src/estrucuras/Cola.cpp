@@ -11,30 +11,15 @@ bool cola_vacia(Nodo *frente){
 }
 
 void Cola::push(Carta carta) {
-    Nodo *nuevo_nodo= new Nodo();
-    nuevo_nodo->carta=carta;
-    if(cola_vacia(frente)){
-        frente =nuevo_nodo;
+    Nodo *nuevo_nodo = new Nodo();
+    nuevo_nodo->carta = carta;
+    if (cola_vacia(frente)) {
+        frente = nuevo_nodo;
+    } else {
+        final->siguiente = nuevo_nodo;
     }
-    else {
-        final->siguiente=nuevo_nodo;
-    }
-    final=nuevo_nodo;
+    final = nuevo_nodo;
 }
-
-/*Carta Cola::pop() {
-    Carta informacion_eliminar=frente->carta;
-    Nodo *aux =frente;
-    if(frente==final){
-        frente=NULL;
-        final=NULL;
-    }
-    else{
-        frente=frente->siguiente;
-    }
-    delete aux;
-    return informacion_eliminar;
-}*/
 
 Carta Cola::pop()  {
     // Verificar si la cola está vacía
@@ -70,7 +55,7 @@ void Cola::imprimir(Cola *cola)  {
         cout << "Contenido de la cola:" <<endl;
         // Recorrer la cola e imprimir cada elemento
         while (actual != nullptr) {
-            cout << actual->carta.texto<< endl;
+            cout << actual->carta.texto<<"  "<<actual->carta.valor<< endl;
             actual = actual->siguiente;
         }
     }
@@ -90,4 +75,36 @@ Carta Cola::primera_carta() {
         return frente->carta;
     }
 
+}
+
+Carta Cola::top_carta() {
+    if(final==NULL){
+        Carta carta_aux;
+        carta_aux.texto="NULL";
+        return carta_aux;
+    }
+    else{
+        return final->carta;
+    }
+}
+
+Carta Cola::pop_final() {
+    Carta carta_eliminar;
+    // Verificar si la cola está vacía
+    if (cola_vacia(final)) {
+        // Por simplicidad, en este ejemplo, simplemente retornaremos un objeto Carta por defecto.
+        Carta carta;
+        carta.texto="#";
+        return carta;// Retornar una Carta por defecto
+    }
+    else{
+         carta_eliminar = final->carta;
+        Nodo* temp = final;
+        final = final->siguiente;
+        delete temp;
+        if (frente == nullptr) {
+            final = nullptr;
+        }
+    }
+    return carta_eliminar;
 }

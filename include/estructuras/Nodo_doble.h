@@ -9,6 +9,6 @@ public:
     Carta carta;
     Nodo_doble *siguiente;
     Nodo_doble *anterior;
-
+    Nodo_doble(Carta valor) : carta(valor), siguiente(nullptr), anterior(nullptr) {}
 };
 #endif //SOLITARIO_NODO_DOBLE_H

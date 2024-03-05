@@ -4,9 +4,10 @@ using  namespace std;
 #define SOLITARIO_CARTA_H
 class Carta{
 public:
-    string valor;
+    int valor;
     string color;
     string texto;
+    char   col;
     bool  visible;
 
 };

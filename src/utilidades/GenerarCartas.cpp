@@ -13,23 +13,25 @@ using  namespace  std;
   9!!N (9 de espadas negras)*/
 
 vector<Carta> lista_cartas;
-void insertar_cartas(string tipo_carta, string color) {
+void insertar_cartas(string tipo_carta, string color, char col) {
     for (int i = 0; i < 13; ++i) {
         Carta carta;
         if (i == 10) {
             carta.texto =  "J"+ tipo_carta;
-            carta.valor = to_string(i+1);
+            carta.valor = i+1;
         } else if (i == 11) {
             carta.texto = "Q" + tipo_carta;
-            carta.valor = to_string(i+1);
+            carta.valor = i+1;
         } else if (i == 12) {
             carta.texto = "K" + tipo_carta;
-            carta.valor = to_string(i+1);
-        } else {
+            carta.valor = i+1;
+        }
+        else {
             carta.texto = to_string(i+1) + tipo_carta;
-            carta.valor = to_string(i+1);
+            carta.valor = i+1;
         }
         carta.color = color;
+        carta.col=col;
         lista_cartas.push_back(carta);
     }
 }
@@ -38,13 +40,13 @@ void insertar_cartas(string tipo_carta, string color) {
 void generar() {
     for (int i = 0; i < 4; ++i) {
         if (i == 0) {
-            insertar_cartas("<3R", "Corazones rojos");
+            insertar_cartas("<3R", "Corazones rojos", 'R');
         } else if (i == 1) {
-            insertar_cartas("<>R", "Diamantes rojos");
+            insertar_cartas("<>R", "Diamantes rojos", 'R');
         } else if (i == 2) {
-            insertar_cartas("E3N", "Treboles negros");
+            insertar_cartas("E3N", "Treboles negros", 'N');
         } else if (i == 3) {
-            insertar_cartas("!!N", "Espadas negras");
+            insertar_cartas("!!N", "Espadas negras",'N');
         }
     }
 }
@@ -65,18 +67,13 @@ Cola* GenerarCartas::aleatorio() {
 }
 
 
-Pila *GenerarCartas::Cargar_pila(int numero) {
-    Pila *pila = new Pila();
+ListaDoble *GenerarCartas::Cargar_pila(int numero) {
+    ListaDoble *list = new ListaDoble();
     for (int i = 0; i <numero ; ++i) {
-        if(i==numero-1){
-            lista_cartas[0].visible=true;
-        }
-        else{
-            lista_cartas[0].visible=false;
-        }
-        pila->push(lista_cartas[0]);
+        list->insertarAlFinal(lista_cartas[0]);
         lista_cartas.erase(lista_cartas.begin());
     }
-    return pila;
+    list->visible_ultima_carta();
+    return list;
 }
 

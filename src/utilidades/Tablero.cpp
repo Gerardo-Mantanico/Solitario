@@ -2,6 +2,8 @@
 #include "../../include/utilidades/Tablero.h"
 #include "../../include/estructuras/Cola.h"
 #include "../../include/estructuras/Pila.h"
+#include "../../include/estructuras/ListaDoble .h"
+
 using namespace std;
 
 void header(){
@@ -33,20 +35,19 @@ void footer(){
     }
 }
 
-void Tablero::imprimir_encabezado(Carta carta) {
-
+void Tablero::imprimir_encabezado(Carta carta , Carta pila1,Carta pila2,Carta pila3,Carta  pila4) {
+    cout<<"\t\t\t\t"<<"    Pila 1\t Pila 2\t     Pila 3\t Pila 4"<<endl;
     for (int i = 0; i <7; ++i) {
         if(i!=2){header();}
         else{cout<<"            ";}
-
     }
     cout<<endl;
     for (int i = 0; i <7; ++i) {
-        if(i!=2){
-            if(i==0){
+        switch (i) {
+            case 0:
                 boby("  X  ");
-            }
-            else if(i==1){
+                break;
+            case 1:
                 if(carta.texto.size()==5){
                     boby(carta.texto);
                 }
@@ -54,14 +55,45 @@ void Tablero::imprimir_encabezado(Carta carta) {
                     boby(" "+carta.texto);
                 }
 
-            }
-            else {
-                boby("     ");
-            }
+                break;
+            case 3:
+                if(pila1.texto.size()==5){
+                    boby( pila1.texto);
+                }
+                else{
+                    boby( " "+pila1.texto);
+                }
 
+                break;
+            case 4:
+                if(pila2.texto.size()==5){
+                    boby( pila2.texto);
+                }
+                else{
+                    boby( " "+pila2.texto);
+                }
+
+                break;
+            case 5:
+                if(pila3.texto.size()==5){
+                    boby( pila3.texto);
+                }
+                else{
+                    boby( " "+pila3.texto);
+                }
+
+                break;
+            case 6:
+                if(pila4.texto.size()==5){
+                    boby( pila4.texto);
+                }
+                else{
+                    boby( " "+pila4.texto);
+                }
+
+                break;
+            default: cout<<"            ";
         }
-        else{cout<<"            ";}
-
     }
     cout<<endl;
     for (int i = 0; i <7; ++i) {
@@ -70,6 +102,9 @@ void Tablero::imprimir_encabezado(Carta carta) {
     }
     cout<<endl<<endl;
 }
+
+
+
 void cuadrados(int size, int columna, Carta carta){
 
     for (int i = 0; i <size; ++i) {
@@ -96,8 +131,50 @@ void Tablero::imprimir(int size_colummna, int size_fila,Carta carta) {
 
 }
 
-void Tablero::cuadrado(string carta) {
-    header();
+void
+Tablero::imprimircuerpo(ListaDoble *list1, ListaDoble *list2, ListaDoble *list3, ListaDoble *list4, ListaDoble *list5,
+                        ListaDoble *list6, ListaDoble *list7) {
+    size_t longitudMaxima = 0;
+    ListaDoble* list[] = {list1, list2, list3, list4, list5, list6, list7};
+    cout << " COL 1" << "\t" << "\t" << " COL 2" << "\t" << "\t" << " COL 3" << "\t" << "\t" << " COL 4" << "\t" << "\t" << " COL 5" << "\t" << "\t" << " COL 6" << "\t" << "\t" << " COL 7" << endl;
+    for (int i = 0; i <103 ; ++i) {
+        printf("%c", 205);
+    }
     cout<<endl;
-    boby(carta);
+    for (size_t i = 0; i < 19; ++i) { // Ajusta el valor 10 según la cantidad máxima de cartas en una fila
+        for (const auto& lista : list) {
+          //  if (lista->estaVacia())
+            //    continue;
+            Nodo_doble* temp = lista->inicio;
+            size_t longitudLista = 0;
+            while (temp != nullptr && longitudLista < i) {
+                longitudLista++;
+                temp = temp->siguiente;
+            }
+            if (longitudLista > longitudMaxima) {
+                longitudMaxima = longitudLista;
+            }
+            if (temp != nullptr) {
+                printf("%c", 186);
+                if (temp->carta.visible) {
+                    if (temp->carta.texto.size() == 5) {
+                        cout << temp->carta.texto;
+                    } else {
+                        cout << " " + temp->carta.texto;
+                    }
+                    printf("%c", 186);
+                    cout << "\t" << "\t";
+                } else {
+                    cout << "  X  ";
+                    printf("%c", 186);
+                    cout << "\t" << "\t";
+                }
+            } else {
+                cout << "\t" << "\t";
+            }
+        }
+        cout <<endl;
+    }
 }
+
+

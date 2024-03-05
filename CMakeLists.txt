@@ -16,6 +16,11 @@ add_executable(Solitario main.cpp
         include/estructuras/Cola.h
         include/utilidades/GenerarCartas.h
         src/utilidades/GenerarCartas.cpp
-        include/recursos/Color.h
         include/estructuras/Nodo_doble.h
+        "include/estructuras/ListaDoble .h"
+        src/estrucuras/ListaDoble.cpp
+        include/recursos/Validaciones.h
+        src/recursos/Validaciones.cpp
+        src/recursos/RecursosLista.cpp
+        include/recursos/RecursosLista.h
 )
