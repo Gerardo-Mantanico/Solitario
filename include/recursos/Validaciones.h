@@ -10,6 +10,7 @@
 
 
 class Validaciones{
+public:
     RecursosLista recursosLista;
     Cola *cola1;
     Cola *cola2;
@@ -36,6 +37,7 @@ public:
     bool push_pilas(int menu,Carta carta);
     bool inserta_pilas_siguiente(Carta carta_aux);
     void insertar_pilas();
+
 
 };
 #endif //SOLITARIO_VALIDACIONES_H

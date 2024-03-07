@@ -72,50 +72,52 @@ Carta Validaciones:: siguiete_carta_cola1(Carta carta_aux){
     }
     return carta;
 }
+void cargar_lista_cartas(int indice, ListaDoble *aux2, RecursosLista &recursosLista){
+    Nodo_doble* actual = aux2->final;
+    while (actual != nullptr) {
+        recursosLista.insertar_cartas_inicio(indice, actual->carta);
+        actual = actual->anterior;
+    }
+
+
+}
+void buscar_carta(RecursosLista recursosLista, int fila, string carta, int destino){
+    ListaDoble *aux = new ListaDoble();
+    while (recursosLista.top_lista(fila).texto!=carta){
+        aux->insertarAlInicio(recursosLista.top_lista(fila));
+        recursosLista. pop_lista(fila);
+    }
+    aux->insertarAlInicio(recursosLista.top_lista(fila));
+    recursosLista. pop_lista(fila);
+
+    cargar_lista_cartas(destino, aux,recursosLista);
+}
+
 void Validaciones:: conjuto_cartas( ){
     string carta;
     int fila;
     int destino;
     ListaDoble *lista_aux;
-    cout<<"Ingrese el numero de fila en donde se encuentra la carta que quiere mover "<<endl;
+    cout<<"Ingrese el numero de columna en donde se encuentra la carta que quiere mover "<<endl;
     cin>>fila;
     cout<<"Ingresa el numero de la columna   hacia donde lo quiere mover: "<<endl;
     cin>>destino;
     cout<<"Ingrese el nombre de la carta desde donde quiera que se mueva"<<endl;
     cin>>carta;
-
-
     if(recursosLista.top_lista(destino).texto==""){
-
-     /*   while (recursosLista.top_lista(fila).texto!=carta){
-            //bug
-            recursosLista.  insertar_cartas(destino,recursosLista.);
-            recursosLista. pop_lista(fila);
-        }
-        recursosLista. insertar_cartas(destino, recursosLista.top_lista(fila));
-        recursosLista. pop_lista(fila);*/
-      //  while (recursosLista.)
-
+        buscar_carta(recursosLista, fila,carta,destino);
     }
     else {
-     /*   Carta carta_aux =recursosLista. buscador_listas(fila,carta);
+        Carta carta_aux =recursosLista. buscador_listas(fila,carta);
         if(carta_aux.texto==""){
             cout<<"Error no se pudo encontrar la carta"<<endl;
-
         }
         else{
             if(carta_aux.col!=recursosLista. top_lista(destino).col && carta_aux.valor== recursosLista.top_lista(destino).valor-1){
-                while (recursosLista.top_lista(fila).texto!=carta){
-                    recursosLista.  insertar_cartas(destino, recursosLista.top_lista(fila));
-                    recursosLista. pop_lista(fila);
-                }
-                recursosLista.  insertar_cartas(destino,recursosLista. top_lista(fila));
-                recursosLista.  pop_lista(fila);
+                buscar_carta(recursosLista, fila,carta,destino);
             }
-        }*/
-
+        }
     }
-
 }
 bool Validaciones :: condiciones_push_pila(Carta carta , Pila *pila){
     bool estado=true;
@@ -125,7 +127,8 @@ bool Validaciones :: condiciones_push_pila(Carta carta , Pila *pila){
         }
         else {
             cout<<"no se puede realizar ese movimiento"<<endl;
-            siguiete_carta_cola1(carta);
+            //ojo
+           // siguiete_carta_cola1(carta);
             estado= false;
         }
     }
@@ -135,7 +138,7 @@ bool Validaciones :: condiciones_push_pila(Carta carta , Pila *pila){
         }
         else {
             cout<<"no se puede realizar ese movimiento"<<endl;
-            siguiete_carta_cola1(carta);
+            //siguiete_carta_cola1(carta);
             estado= false;
         }
 
@@ -182,3 +185,4 @@ void Validaciones::insertar_pilas(){
     }
 
 }
+

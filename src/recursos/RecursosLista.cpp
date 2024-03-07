@@ -4,8 +4,8 @@
 using  namespace  std;
 
 
-Nodo_doble* RecursosLista::buscador_listas(int indice, std::string texto) {
-    Nodo_doble *carta;
+Carta RecursosLista::buscador_listas(int indice, std::string texto) {
+    Carta carta;
     switch (indice) {
         case 1:
             carta=list1->buscar(texto);
@@ -154,4 +154,34 @@ Carta RecursosLista::pop_nodo_espesifico(int indice, Nodo_doble *nodo) {
         default: cout<<"Fuera de rango"<<endl;
     }
     return carta;
+}
+
+
+void RecursosLista:: insertar_cartas_inicio(int indice, Carta carta){
+    switch (indice) {
+        case 1:
+
+            list1->insertarAlInicio(carta);
+            break;
+        case 2:
+            list2->insertarAlInicio(carta);
+            break;
+        case 3:
+            list3->insertarAlInicio(carta);
+            break;
+        case 4:
+            list4->insertarAlInicio(carta);
+            break;
+        case 5:
+            list5->insertarAlInicio(carta);
+            break;
+        case 6:
+            list6->insertarAlInicio(carta);
+            break;
+
+        case 7:
+            list7->insertarAlInicio(carta);
+            break;
+        default: cout<<"Fuera de rango"<<endl;
+    }
 }

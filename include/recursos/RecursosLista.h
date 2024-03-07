@@ -20,11 +20,12 @@ public:
             list1(list1),  list2(list2),  list3(list3),  list4(list4),  list5(list5),  list6(list6),  list7(list7) {}
 
     RecursosLista() {}
-    Nodo_doble* buscador_listas(int indice, string texto);
+    Carta buscador_listas(int indice, string texto);
     Carta top_lista(int menu);
     void pop_lista(int menu);
     void  insertar_cartas(int indice, Carta carta);
     Carta pop_nodo_espesifico(int indice, Nodo_doble *nodo);
+    void insertar_cartas_inicio(int indice, Carta carta);
 };
 
 

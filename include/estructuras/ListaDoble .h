@@ -17,12 +17,13 @@ public:
     bool estaVacia();
     void insertarAlInicio(Carta carta);
     void insertarAlFinal(Carta carta);
-    Nodo_doble* buscar(string texto);
+    Carta buscar(string texto);
     Carta eliminar_nodo_buscador(Nodo_doble *nodo);
     void imprimirInverso();
     void eliminarNodo(Nodo_doble* nodo);
     Carta top();
     void visible_ultima_carta();
+    Carta eliminar_desde(Nodo_doble* nodo);
 
 };
 #endif //SOLITARIO_LISTADOBLE_H

@@ -57,13 +57,13 @@ void ListaDoble::eliminarNodo(Nodo_doble *nodo) {
 }
 
 
-Nodo_doble* ListaDoble::buscar(string texto) {
+Carta ListaDoble::buscar(string texto) {
     Nodo_doble* actual = inicio;
-    Nodo_doble *carta;
-    carta->carta.texto="";
+    Carta carta;
+    carta.texto="";
     while (actual != nullptr) {
         if(actual->carta.texto==texto){
-            carta=actual;
+            carta=actual->carta;
             break;
         }
         actual = actual->siguiente;
