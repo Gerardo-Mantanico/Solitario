@@ -7,6 +7,7 @@
 #include "../../include/estructuras/Pila.h"
 #include "../../include/recursos/RecursosLista.h"
 #include "../../include/recursos/Validaciones.h"
+#include "../../include/estructuras/Historial.h"
 
 using namespace  std;
 
@@ -28,6 +29,7 @@ Pila *pila3= new Pila();
 Pila *pila4= new Pila();
 RecursosLista recursos;
 Validaciones validaciones;
+Historial *historial= new Historial();
 int menu_indice=-1;
 
 void cargar_cartas(){
@@ -38,9 +40,9 @@ void cargar_cartas(){
     list5=generar.Cargar_pila(5);
     list6=generar.Cargar_pila(6);
     list7=generar.Cargar_pila(7);
-    RecursosLista r(list1, list2, list3, list4, list5, list6, list7);
+    RecursosLista r(list1, list2, list3, list4, list5, list6, list7,pila1,pila2,pila3,pila4);
     recursos=r;
-    Validaciones validaciones1(recursos,cola1,cola2,pila1,pila2,pila3,pila4);
+    Validaciones validaciones1(recursos,cola1,cola2,pila1,pila2,pila3,pila4,historial);
     validaciones=validaciones1;
 }
 
@@ -49,7 +51,9 @@ void menu(){
     cout<<"2)  Para mover  una carta de una columna a otra,  presione '2' "<<endl;
     cout<<"3)  Para mover  un conjunto de cartas precione '3'"<<endl;
     cout<<"4   Para mover una carta hacia un pila presione '4'"<<endl;
-    cout<<"5)  Para salir presione  '0'"<<endl;
+    cout<<"5   Para regresar  presione  5 "<<endl;
+    cout<<"6   Para adelantar presione  6 "<<endl;
+    cout<<"7)  Para salir presione  '0'"<<endl;
 }
 
 void  imprimir1(){
@@ -57,8 +61,8 @@ void  imprimir1(){
 }
 
 void Iniciar::juar() {
-    int actual;
-    int siguiente;
+    int actual =0 ;
+    int siguiente=0;
     cola1=generar.aleatorio();
     cargar_cartas();
     Carta carta;
@@ -67,7 +71,6 @@ void Iniciar::juar() {
     imprimir1();
     cout<<endl;
     while(menu_indice!=0){
-        //cola2->imprimir(cola2);
        menu();
        cin>>menu_indice;
        switch (menu_indice) {
@@ -85,15 +88,24 @@ void Iniciar::juar() {
                    imprimir1();
                    carta=validaciones.siguiete_carta_cola1(carta);
                }
+               historial->eliminiar_datos();
                break;
            case  2:
+               historial->eliminiar_datos();
                validaciones.mover_cartas_filas( actual,  siguiente);
                break;
            case 3:
                validaciones. conjuto_cartas();
+               historial->eliminiar_datos();
                break;
            case 4:
-               validaciones.  insertar_pilas();
+               validaciones.insertar_pilas();
+               break;
+           case 5:
+               validaciones.retroceder();
+               break;
+           case 6:
+               validaciones.adelantar();
                break;
            default: cout<<"Fuera de rango"<<endl;
        }

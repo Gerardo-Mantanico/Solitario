@@ -4,12 +4,12 @@
 #define SOLITARIO_LISTADOBLE_H
 
 #include "Nodo_doble.h"
+#include "Nodo_Lista.h"
 
 class ListaDoble{
 public:
     Nodo_doble* inicio;
     Nodo_doble* final;
-
 public:
     // Constructor
     ListaDoble();
@@ -19,11 +19,8 @@ public:
     void insertarAlFinal(Carta carta);
     Carta buscar(string texto);
     Carta eliminar_nodo_buscador(Nodo_doble *nodo);
-    void imprimirInverso();
     void eliminarNodo(Nodo_doble* nodo);
     Carta top();
     void visible_ultima_carta();
-    Carta eliminar_desde(Nodo_doble* nodo);
-
 };
 #endif //SOLITARIO_LISTADOBLE_H

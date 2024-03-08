@@ -185,3 +185,25 @@ void RecursosLista:: insertar_cartas_inicio(int indice, Carta carta){
         default: cout<<"Fuera de rango"<<endl;
     }
 }
+
+Carta RecursosLista::top_pila(int indice) {
+    Carta carta;
+    switch (indice) {
+        case 1:
+            carta=pila1->top();
+            break;
+        case 2:
+            carta=pila2->top();
+            break;
+        case 3:
+            carta=pila3->top();
+            break;
+        case 4:
+            carta=pila4->top();
+            break;
+        default:
+            cout<<"la opciones que ingreso esta fuera de rango"<<endl;
+            break;
+    }
+    return carta;
+}

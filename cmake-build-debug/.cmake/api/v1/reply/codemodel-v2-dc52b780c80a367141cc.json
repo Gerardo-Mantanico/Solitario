@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "Solitario::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-Solitario-Debug-55885fc07e51dc24195a.json",
+					"jsonFile" : "target-Solitario-Debug-cc7253d2ce500ce9e36a.json",
 					"name" : "Solitario",
 					"projectIndex" : 0
 				}
@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/HP/CLionProjects/Solitario/cmake-build-debug",
-		"source" : "C:/Users/HP/CLionProjects/Solitario"
+		"build" : "C:/Users/HP/Desktop/Solitario/cmake-build-debug",
+		"source" : "C:/Users/HP/Desktop/Solitario"
 	},
 	"version" : 
 	{

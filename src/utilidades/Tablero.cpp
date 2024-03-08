@@ -3,33 +3,40 @@
 #include "../../include/estructuras/Cola.h"
 #include "../../include/estructuras/Pila.h"
 #include "../../include/estructuras/ListaDoble .h"
-
 using namespace std;
 
 void header(){
-    printf("%c", 201);
+    //printf("%c", 201);
+    cout<<"+";
     for(int i=0; i<5;i++){
-        printf("%c", 205); // ═
+       // printf("%c", 205); // ═
+        cout<<"~";
     }
-    printf("%c", 187);
+    //printf("%c", 187);
+    cout<<"+";
     for (int i = 0; i <5; ++i) {
         cout<<" ";
     }
 }
 void boby(string text){
-    printf("%c", 186);
+    //printf("%c", 186);
+    cout<<"|";
     cout<<text; // ═
-    printf("%c", 186);
+    //("%c", 186);
+    cout<<"|";
     for (int i = 0; i <5; ++i) {
         cout<<" ";
     }
 }
 void footer(){
-    printf("%c", 200);
+   // printf("%c", 200);
+    cout<<"+";
     for(int i=0; i<5;i++){
-        printf("%c", 205); // ═
+       // printf("%c", 205); // ═
+       cout<<"~";
     }
-    printf("%c", 188);
+    //printf("%c", 188);
+    cout<<"+";
     for (int i = 0; i <5; ++i) {
         cout<<" ";
     }
@@ -131,14 +138,14 @@ void Tablero::imprimir(int size_colummna, int size_fila,Carta carta) {
 
 }
 
-void
-Tablero::imprimircuerpo(ListaDoble *list1, ListaDoble *list2, ListaDoble *list3, ListaDoble *list4, ListaDoble *list5,
+void Tablero::imprimircuerpo(ListaDoble *list1, ListaDoble *list2, ListaDoble *list3, ListaDoble *list4, ListaDoble *list5,
                         ListaDoble *list6, ListaDoble *list7) {
     size_t longitudMaxima = 0;
     ListaDoble* list[] = {list1, list2, list3, list4, list5, list6, list7};
     cout << " COL 1" << "\t" << "\t" << " COL 2" << "\t" << "\t" << " COL 3" << "\t" << "\t" << " COL 4" << "\t" << "\t" << " COL 5" << "\t" << "\t" << " COL 6" << "\t" << "\t" << " COL 7" << endl;
     for (int i = 0; i <103 ; ++i) {
-        printf("%c", 205);
+        //printf("%c", 205);
+        cout<<"~";
     }
     cout<<endl;
     for (size_t i = 0; i < 19; ++i) { // Ajusta el valor 10 según la cantidad máxima de cartas en una fila
@@ -155,19 +162,23 @@ Tablero::imprimircuerpo(ListaDoble *list1, ListaDoble *list2, ListaDoble *list3,
                 longitudMaxima = longitudLista;
             }
             if (temp != nullptr) {
-                printf("%c", 186);
-                if (temp->carta.visible) {
+               // printf("%c", 186);
+                cout<<"|";
+                if (temp->carta.visible==true) {
                     if (temp->carta.texto.size() == 5) {
                         cout << temp->carta.texto;
                     } else {
                         cout << " " + temp->carta.texto;
                     }
-                    printf("%c", 186);
+                    cout<<"|";
+                   // printf("%c", 186);
                     cout << "\t" << "\t";
                 } else {
                     cout << "  X  ";
-                    printf("%c", 186);
+                    cout<<"|";
+                   // printf("%c", 186);
                     cout << "\t" << "\t";
+
                 }
             } else {
                 cout << "\t" << "\t";

@@ -72,15 +72,6 @@ Carta ListaDoble::buscar(string texto) {
     return carta;
 }
 
-void ListaDoble::imprimirInverso() {
-    Nodo_doble* actual = final;
-    while (actual != nullptr) {
-        std::cout << actual->carta.texto << " ";
-        actual = actual->anterior;
-    }
-    std::cout << std::endl;
-}
-
 Carta ListaDoble::top() {
         if (estaVacia()) {
            // std::cerr << "La pila está vacía.\n";
@@ -124,3 +115,4 @@ Carta ListaDoble::eliminar_nodo_buscador(Nodo_doble *nodo) {
     delete nodo;
     return  carta;
 }
+

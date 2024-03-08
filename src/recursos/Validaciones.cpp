@@ -1,6 +1,7 @@
 
 #include "../../include/recursos/Validaciones.h"
 #include "../../include/recursos/RecursosLista.h"
+#include "../../include/estructuras/Historial.h"
 #include <iostream>
 using  namespace  std;
 void Validaciones:: mover_cartas_filas(int actual, int siguiente){
@@ -14,7 +15,9 @@ void Validaciones:: mover_cartas_filas(int actual, int siguiente){
         if(recursosLista.top_lista(siguiente).texto!=""){
             if(recursosLista.top_lista(actual).col!= recursosLista.top_lista(siguiente).col && recursosLista.top_lista(siguiente).valor==(recursosLista.top_lista(actual).valor+1)){
                 recursosLista.insertar_cartas(siguiente, recursosLista.top_lista(actual));
+                historial->push(recursosLista.top_lista(actual),siguiente,actual);
                 recursosLista.pop_lista(actual);
+
             }
             else{
                 cout<<" Error no se puede realizar el moviento"<<endl;
@@ -22,7 +25,9 @@ void Validaciones:: mover_cartas_filas(int actual, int siguiente){
         }
         else {
             recursosLista. insertar_cartas(siguiente, recursosLista.top_lista(actual));
+            historial->push(recursosLista.top_lista(actual),siguiente,actual);
             recursosLista. pop_lista(actual);
+
         }
 
     }
@@ -72,32 +77,67 @@ Carta Validaciones:: siguiete_carta_cola1(Carta carta_aux){
     }
     return carta;
 }
-void cargar_lista_cartas(int indice, ListaDoble *aux2, RecursosLista &recursosLista){
+void cargar_lista_cartas(int indice, ListaDoble *aux2, RecursosLista &recursosLista, int index){
     Nodo_doble* actual = aux2->final;
     while (actual != nullptr) {
-        recursosLista.insertar_cartas_inicio(indice, actual->carta);
+        if(index==1){
+            recursosLista.insertar_cartas_inicio(indice, actual->carta);
+        }
+        else {
+           recursosLista.insertar_cartas(indice, actual->carta);
+        
+        }
+        
         actual = actual->anterior;
     }
 
 
 }
-void buscar_carta(RecursosLista recursosLista, int fila, string carta, int destino){
+void buscar_carta(RecursosLista recursosLista, int fila, string carta, int destino, int indice){
     ListaDoble *aux = new ListaDoble();
-    while (recursosLista.top_lista(fila).texto!=carta){
-        aux->insertarAlInicio(recursosLista.top_lista(fila));
-        recursosLista. pop_lista(fila);
-    }
-    aux->insertarAlInicio(recursosLista.top_lista(fila));
-    recursosLista. pop_lista(fila);
-
-    cargar_lista_cartas(destino, aux,recursosLista);
+    Carta carta_solitada=  recursosLista.buscador_listas(fila ,carta);
+        switch (indice){
+        case 1:
+                if(carta_solitada.texto!=""){
+                    while (recursosLista.top_lista(fila).texto!=carta){
+                            aux->insertarAlInicio(recursosLista.top_lista(fila));
+                            recursosLista. pop_lista(fila);
+                        }
+                        aux->insertarAlInicio(recursosLista.top_lista(fila));
+                        recursosLista. pop_lista(fila);
+                }
+                else {
+                    cout<<"No se  puedo encotrar la carta"<<endl;
+                    return;
+                     }
+        break;
+         case 2:
+                if(carta_solitada.texto!=""){
+                    while (recursosLista.top_lista(fila).texto!=carta){
+                            aux->insertarAlFinal(recursosLista.top_lista(fila));
+                            recursosLista. pop_lista(fila);
+                        }
+                        aux->insertarAlFinal(recursosLista.top_lista(fila));
+                        recursosLista. pop_lista(fila);
+                }
+                else {
+                    cout<<"No se  puedo encotrar la carta"<<endl;
+                    return;
+                     }
+        break;
+        
+        
+        default:
+            break;
+        }
+      
+    cargar_lista_cartas(destino, aux,recursosLista, indice);
 }
 
 void Validaciones:: conjuto_cartas( ){
     string carta;
     int fila;
     int destino;
-    ListaDoble *lista_aux;
     cout<<"Ingrese el numero de columna en donde se encuentra la carta que quiere mover "<<endl;
     cin>>fila;
     cout<<"Ingresa el numero de la columna   hacia donde lo quiere mover: "<<endl;
@@ -105,16 +145,17 @@ void Validaciones:: conjuto_cartas( ){
     cout<<"Ingrese el nombre de la carta desde donde quiera que se mueva"<<endl;
     cin>>carta;
     if(recursosLista.top_lista(destino).texto==""){
-        buscar_carta(recursosLista, fila,carta,destino);
+        buscar_carta(recursosLista, fila,carta,destino,1);
     }
     else {
         Carta carta_aux =recursosLista. buscador_listas(fila,carta);
         if(carta_aux.texto==""){
             cout<<"Error no se pudo encontrar la carta"<<endl;
+            return;
         }
         else{
             if(carta_aux.col!=recursosLista. top_lista(destino).col && carta_aux.valor== recursosLista.top_lista(destino).valor-1){
-                buscar_carta(recursosLista, fila,carta,destino);
+                buscar_carta(recursosLista, fila,carta,destino,2);
             }
         }
     }
@@ -181,8 +222,30 @@ void Validaciones::insertar_pilas(){
     cin>>num_fila;
     cout<<endl;
     if (push_pilas(num_pila, recursosLista.top_lista(num_fila) )){
-        recursosLista.  pop_lista(num_fila);
+        recursosLista.pop_lista(num_fila);
+        historial->push(recursosLista.top_lista(num_fila),num_fila,num_fila);
     }
 
 }
 
+void Validaciones::retroceder() {
+    Nodo_Lista *nodo=historial->carta();
+    if(nodo!=NULL){
+        recursosLista.insertar_cartas(nodo->num_lista_salida,nodo->carta);
+        recursosLista.pop_lista(nodo->num_lista_entrada);
+    }
+    else{
+        cout<<"No se puede retroceder porque ya se realizo un movimiento nuevo "<<endl;
+    }
+}
+
+void Validaciones::adelantar() {
+    Nodo_Lista *nodo=historial->carta();
+    if(nodo!=NULL){
+        recursosLista.insertar_cartas(nodo->num_lista_entrada,nodo->carta);
+        recursosLista.pop_lista(nodo->num_lista_salida);
+    }
+    else{
+        cout<<"No se puede adelantar porque ya se realizo un movimiento nuevo "<<endl;
+    }
+}

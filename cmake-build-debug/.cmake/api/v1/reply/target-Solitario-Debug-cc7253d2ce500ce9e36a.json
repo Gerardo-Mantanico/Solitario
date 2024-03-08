@@ -60,7 +60,8 @@
 				12,
 				15,
 				17,
-				18
+				18,
+				22
 			]
 		}
 	],
@@ -105,7 +106,8 @@
 				12,
 				15,
 				17,
-				18
+				18,
+				22
 			]
 		},
 		{
@@ -122,7 +124,9 @@
 				13,
 				14,
 				16,
-				19
+				19,
+				20,
+				21
 			]
 		}
 	],
@@ -236,6 +240,22 @@
 			"backtrace" : 1,
 			"path" : "include/recursos/RecursosLista.h",
 			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "include/estructuras/Nodo_Lista.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "include/estructuras/Historial.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/utilidades/Historial.cpp",
+			"sourceGroupIndex" : 0
 		}
 	],
 	"type" : "EXECUTABLE"

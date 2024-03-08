@@ -23,4 +23,7 @@ add_executable(Solitario main.cpp
         src/recursos/Validaciones.cpp
         src/recursos/RecursosLista.cpp
         include/recursos/RecursosLista.h
+        include/estructuras/Nodo_Lista.h
+        include/estructuras/Historial.h
+        src/utilidades/Historial.cpp
 )
