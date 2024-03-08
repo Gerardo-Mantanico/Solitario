@@ -37,8 +37,8 @@ Carta Validaciones:: siguiete_carta_cola1(Carta carta_aux){
     Carta carta;
     int actual;
     cout<<"Presione '1' si desea continuar"<<endl;
-    cout<<"Presione  '2' si desa agregar la carta a una columna"<<endl;
-    cout<<"Presione  '3' si desa agregar la carta a pila"<<endl;
+    cout<<"Presione  '2' si desea agregar la carta a una columna"<<endl;
+    cout<<"Presione  '3' si desea agregar la carta a pila"<<endl;
     cin>>actual;
     switch (actual) {
         case 1:
